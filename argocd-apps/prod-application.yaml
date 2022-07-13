@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: telescope-backend-main-prod
+spec:
+  destination:
+    namespace: telescope-backend-prod
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    helm:
+      valueFiles:
+        - values-PROD.yaml
+    path: charts/
+    repoURL: 'https://github.com/RH-Telescope/telescope-backend-ops.git'
+    targetRevision: main
+  syncPolicy:
+    automated: {}
+
