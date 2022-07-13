@@ -1,0 +1,53 @@
+###################
+# Build artifacts #
+###################
+target/
+classes/
+*.class
+
+
+#################
+# Misc OS files #
+#################
+
+# Linux #
+*.swp
+
+# Mac #
+.DS_Store
+
+
+#############
+# IDE files #
+#############
+
+# Eclipse #
+# TODO: post-migration, git rm these files, then uncomment entries
+.settings/
+.project
+.classpath
+
+# Visual Studio Code #
+.vscode/
+.code-workspace
+
+# IntelliJ #
+.idea/
+*.iml
+
+
+#########################
+# JVM runtime artifacts #
+#########################
+
+hs_err_pid*
+replay_pid*
+
+
+###############
+# Misc. files #
+###############
+
+# Log file
+*.log
+
