@@ -23,7 +23,7 @@ public class Capability {
     @GeneratedValue
     public Integer id;
 
-    @Column
+    @Column(name = "description")
     public String name;
 
     @ManyToOne
@@ -34,7 +34,7 @@ public class Capability {
     @JoinColumn(name = "flag_id")
     public Flag flag;
 
-    @Column
+    @Column(name = "created_at")
     public Timestamp createdAt;
 
     public Integer getId() {

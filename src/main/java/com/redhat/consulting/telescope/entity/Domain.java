@@ -23,13 +23,13 @@ public class Domain {
     @GeneratedValue
     public Integer id;
 
-    @Column
+    @Column(name = "description")
     public String name;
 
     @OneToMany(mappedBy = "domain")
     public List<Capability> capabilities;
 
-    @Column
+    @Column(name = "created_at")
     public Timestamp createdAt;
 
     public Integer getId() {

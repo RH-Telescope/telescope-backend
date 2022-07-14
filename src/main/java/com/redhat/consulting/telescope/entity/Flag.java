@@ -20,10 +20,10 @@ public class Flag {
     @GeneratedValue
     public Integer id;
 
-    @Column
+    @Column(name = "description")
     public String name;
 
-    @Column
+    @Column(name = "created_at")
     public Timestamp createdAt;
 
     public Integer getId() {
