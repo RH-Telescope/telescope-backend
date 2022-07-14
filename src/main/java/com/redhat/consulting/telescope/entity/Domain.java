@@ -29,4 +29,36 @@ public class Domain {
 
     @Column
     public Timestamp createdAt;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Capability> getCapabilities() {
+        return capabilities;
+    }
+
+    public void setCapabilities(List<Capability> capabilities) {
+        this.capabilities = capabilities;
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
 }

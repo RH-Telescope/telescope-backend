@@ -13,6 +13,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.redhat.consulting.telescope.dao.DomainDAO;
+import com.redhat.consulting.telescope.entity.Capability;
+import com.redhat.consulting.telescope.entity.Domain;
 import com.redhat.consulting.telescope.model.CapabilityModel;
 import com.redhat.consulting.telescope.model.DomainModel;
 
@@ -33,6 +35,21 @@ public class DomainResource {
      * @return the list of all domains
      */
     @GET
+    public Set<DomainModel> get() {
+        // TODO: For v1 POC, returning a static set of Domains
+        Set<DomainModel> domains = new LinkedHashSet<>();
+
+        List<Domain> domainEntities = domainDAO.getAllDomains();
+
+        for (Domain domainEntity : domainEntities) {
+            domains.add(getDomainModel(domainEntity));
+        }
+
+        return domains;
+    }
+
+
+    /*    @GET
     public Set<DomainModel> get() {
         // TODO: For v1 POC, returning a static set of Domains
         Set<DomainModel> domains = new LinkedHashSet<>();
@@ -71,18 +88,42 @@ public class DomainResource {
 
 
         return domains;
-    }
+    }*/
 
     /**
      *
      * @param capabilities
      * @return
      */
-    private String getFlag(List<CapabilityModel> capabilities) {
+    private String getFlag(List<Capability> capabilities) {
         return capabilities
                 .stream()
-                .map(CapabilityModel::getFlag)
+                .map(Capability::getFlagName)
                 .collect(Collectors.toList())
                 .contains("red") ? "red" : "green";
+    }
+
+    private DomainModel getDomainModel(Domain domainEntity) {
+        DomainModel domain = new DomainModel();
+
+        domain.capabilities = new ArrayList<>();
+
+        for (Capability capabilityEntity : domainEntity.capabilities) {
+            domain.capabilities.add(getCapabilityModel(capabilityEntity));
+        }
+
+        domain.name = domainEntity.name;
+        domain.flag = getFlag(domainEntity.capabilities);
+
+        return domain;
+    }
+
+    private CapabilityModel getCapabilityModel(Capability capabilityEntity) {
+        CapabilityModel capability = new CapabilityModel();
+
+        capability.name = capabilityEntity.name;
+        capability.flag = capabilityEntity.flag.name;
+
+        return capability;
     }
 }
