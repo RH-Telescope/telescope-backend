@@ -1,6 +1,7 @@
 package com.redhat.consulting.telescope.rest;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import com.redhat.consulting.telescope.dao.DomainDAO;
 import com.redhat.consulting.telescope.model.CapabilityModel;
 import com.redhat.consulting.telescope.model.DomainModel;
 
@@ -19,6 +21,9 @@ import com.redhat.consulting.telescope.model.DomainModel;
 @Produces("application/json")
 @Consumes("application/json")
 public class DomainResource {
+
+    @Inject
+    DomainDAO domainDAO;
 
     public DomainResource() {
     }
@@ -49,7 +54,7 @@ public class DomainResource {
         // Setting up second domain
         List<CapabilityModel> capabilities2 = new ArrayList<>();
         CapabilityModel capability21 = new CapabilityModel("Capability 2-1", "green");
-        CapabilityModel capability22 = new CapabilityModel("Capability 2-2", "red");
+        CapabilityModel capability22 = new CapabilityModel("Capability 2-2", "green");
 
         capabilities2.add(capability21);
         capabilities2.add(capability22);
@@ -76,7 +81,7 @@ public class DomainResource {
     private String getFlag(List<CapabilityModel> capabilities) {
         return capabilities
                 .stream()
-                .map(CapabilityModel::getStatus)
+                .map(CapabilityModel::getFlag)
                 .collect(Collectors.toList())
                 .contains("red") ? "red" : "green";
     }
