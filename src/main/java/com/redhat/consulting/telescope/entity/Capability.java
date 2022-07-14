@@ -26,14 +26,12 @@ public class Capability {
     @Column
     public String name;
 
-    @Column(name = "domain_id")
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "domain_id")
     public Domain domain;
 
-    @Column(name = "flag_id")
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "flag_id")
     public Flag flag;
 
     @Column

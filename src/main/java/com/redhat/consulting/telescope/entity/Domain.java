@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.QueryHint;
 import javax.persistence.Table;
 import java.sql.Timestamp;
@@ -25,8 +26,7 @@ public class Domain {
     @Column
     public String name;
 
-    @Column
-    @ManyToOne
+    @OneToMany(mappedBy = "domain")
     public List<Capability> capabilities;
 
     @Column
