@@ -1,6 +1,7 @@
 package com.redhat.consulting.telescope.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -11,6 +12,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import java.sql.Timestamp;
 
+@Entity
 @Table
 @NamedQuery(
         name = "Capability.findAll",
