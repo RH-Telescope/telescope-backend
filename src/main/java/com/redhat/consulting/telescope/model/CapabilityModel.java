@@ -6,14 +6,14 @@ import io.quarkus.runtime.annotations.RegisterForReflection;
 public class CapabilityModel {
 
     public String name;
-    public String status;
+    public String flag;
 
     public CapabilityModel() {
     }
 
-    public CapabilityModel(String name, String status) {
+    public CapabilityModel(String name, String flag) {
         this.name = name;
-        this.status = status;
+        this.flag = flag;
     }
 
     public String getName() {
@@ -24,12 +24,12 @@ public class CapabilityModel {
         this.name = name;
     }
 
-    public String getStatus() {
-        return status;
+    public String getFlag() {
+        return flag;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setFlag(String flag) {
+        this.flag = flag;
     }
 }
 
