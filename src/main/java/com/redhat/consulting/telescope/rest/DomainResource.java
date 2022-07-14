@@ -41,7 +41,7 @@ public class DomainResource {
         capabilities1.add(capability12);
 
         DomainModel domain1 = new DomainModel();
-        domain1.name = "Secure Code - Hardcoded";
+        domain1.name = "Secure Code";
         domain1.flag = getFlag(capabilities1);
         domain1.capabilities = capabilities1;
 
@@ -55,7 +55,7 @@ public class DomainResource {
         capabilities2.add(capability22);
 
         DomainModel domain2 = new DomainModel();
-        domain2.name = "Secure Infrastructure - Hardcoded";
+        domain2.name = "Secure Infrastructure";
         domain2.flag = getFlag(capabilities2);
         domain2.capabilities = capabilities2;
 
