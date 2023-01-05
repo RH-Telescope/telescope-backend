@@ -1,5 +1,8 @@
 # Project Telescope - Backend
 
+[![Build Status](https://github.com/RH-Telescope/telescope-backend/workflows/CI/badge.svg?branch=main)](https://github.com/RH-Telescope/telescope-backend/actions?workflow=CI)
+ [![Docker Repository on Quay](https://quay.io/repository/telescope/telescope-backend/status "Image Repository on Quay")](https://quay.io/repository/telescope/telescope-backend)
+
 This is the backend POC for the Telescope project. Much of this needs to be refactored (or rewritten entirely), as this was hacked together last minute for a demo.
 
 # Environment Setup Instructions
@@ -26,12 +29,13 @@ NOTE: Ensure that you are logged into Quay and have access to `telescope-backend
 
 # Deploying the application onto OpenShift
 
-* Clone the associated ops repo locally: https://github.com/RH-Telescope/telescope-backend-ops
+* Clone the associated ops repo locally: <https://github.com/RH-Telescope/telescope-backend-ops>
 * From that directory: helm install telescope-backend charts/
 
 ## Updating the application: ops repo changes
 
-To allow the application to deploy when the ops repo is updated: 
+To allow the application to deploy when the ops repo is updated:
+
 * In the telescope-backend-ops GitHub repo, got to Settings -> Webhooks -> Add webhook
 * For "Payload URL", `https://<gitops-url>/api/webhook` (replacing `<gitops-url>` with the actual URL for the ArgoCD / GitOps URL)
 * Update "Content type" to `application/json`
